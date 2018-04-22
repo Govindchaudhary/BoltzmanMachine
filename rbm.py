@@ -22,17 +22,17 @@ test_set = pd.read_csv('ml-100k/u1.test', delimiter = '\t')
 test_set = np.array(test_set, dtype = 'int')
 
 # Getting the number of users and movies
-#training_set[:,0] --ist column of training set ie. user
+#training_set[:,0] --ist column of training set ie. usertwork and columns are going to be input nodes of the network)
+#basically this will be the list of users where each user is the list of its ratings to all the movies
+def convert(data):
+    new_data = []
+    for id_users in range(1, nb_users + 1):
 #nb_users is the max no. of users, nb_movies is the max no. of movies
 nb_users = int(max(max(training_set[:,0]), max(test_set[:,0])))
 nb_movies = int(max(max(training_set[:,1]), max(test_set[:,1])))
 
 # Converting the data into an array with users in lines and movies in columns
-#(lines are going to be the observations in the network and columns are going to be input nodes of the network)
-#basically this will be the list of users where each user is the list of its ratings to all the movies
-def convert(data):
-    new_data = []
-    for id_users in range(1, nb_users + 1):
+#(lines are going to be the observations in the ne
         #basically all the index of the  movies rated by the user with id==id_users
         #contains the 2nd column ie. movies id such that ist column ie. userId ==id_users
         id_movies = data[:,1][data[:,0] == id_users] 
